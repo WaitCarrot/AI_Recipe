@@ -26,8 +26,8 @@ class ZhipuModel:
         print(data)
         print(headers)
         response = requests.post(self.base_url, headers=headers, json=data)
-        print(response.json())
-        return response
+        print(response.json()["choices"][0]["message"]["content"])
+        return response.json()["choices"][0]["message"]["content"]
         
     def process_parallel_responses(self, data):
         # 构建用户基础信息
