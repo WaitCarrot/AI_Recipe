@@ -13,7 +13,7 @@ def index():
 def submit():
     data = json.loads(request.args.get('data', '{}'))
     
-    def generate_response():
+    async def generate_response():
         try:
             model = ZhipuModel()
             print("开始生成三个主要方案...")
