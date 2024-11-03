@@ -13,6 +13,7 @@ class ZhipuModel:
         
     def get_response(self, messages):
         #response = self.client.chat.completions.create(model="glm-4-0520", messages=messages, stream=True)
+        print("ready to get response!!!")
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
