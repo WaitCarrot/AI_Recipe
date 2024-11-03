@@ -6,13 +6,21 @@ class ZhipuModel:
         #self.client = ZhipuAI(api_key=os.getenv("ZhipuAI_API_KEY"))
         self.client = ZhipuAI(api_key="d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z")
         print("client generated!!!")
+        self.api_key = "d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z"
+        self.base_url = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
         
     def get_response(self, messages):
-        response = self.client.chat.completions.create(
-            model="glm-4-0520",
-            messages=messages,
-            stream=True
-        )
+        #response = self.client.chat.completions.create(model="glm-4-0520", messages=messages, stream=True)
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json"
+        }
+        data = {
+            "model": "glm-4",
+            "messages": messages
+        }
+        response = requests.post(self.base_url, headers=headers, json=data)
+        print(response)
         return response
         
     def process_parallel_responses(self, data):
