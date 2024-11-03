@@ -12,8 +12,19 @@ class ZhipuModel:
             messages=messages,
             #stream=True
         )
-        print(response)
-        return response
+        task_id = response.id
+        task_status = ''
+        get_cnt = 0
+
+        while task_status != 'SUCCESS' and task_status != 'FAILED' and get_cnt <= 40:
+            result_response = client.chat.asyncCompletions.retrieve_completion_result(id=task_id)
+            print(result_response.task_status)
+            task_status = result_response.task_status
+            time.sleep(2)
+            get_cnt += 1
+            
+        return result_response.choices[0].message.content
+        #return response
         
     def process_parallel_responses(self, data):
         # 构建用户基础信息
