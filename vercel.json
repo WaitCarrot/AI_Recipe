@@ -4,6 +4,9 @@
         {
             "src": "app.py",
             "use": "@vercel/python"
+            "config": {
+                "timeout": 60
+            }
         }
     ],
     "routes": [
