@@ -1,5 +1,7 @@
 import os
 from zhipuai import ZhipuAI
+import requests
+import json
 
 class ZhipuModel:
     def __init__(self):
