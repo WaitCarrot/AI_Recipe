@@ -1,29 +1,19 @@
 import os
-import aiohttp
-import json
-import logging
+from zhipuai import ZhipuAI
 
 class ZhipuModel:
     def __init__(self):
-        self.api_key = os.getenv("ZhipuAI_API_KEY")
-        self.base_url = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-
-    async def get_response(self, messages):
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json"
-        }
-        data = {
-            "model": "glm-4",
-            "messages": messages,
-            "stresm": True,
-        }
-        async with aiohttp.ClientSession() as session:
-            async with session.post(self.base_url, headers=headers, json=data) as response:
-                async for chunk in response.content.iter_any():
-                    yield chunk
-
-    async def process_parallel_responses(self, data):
+        self.client = ZhipuAI(api_key=os.getenv("ZhipuAI_API_KEY"))
+        
+    def get_response(self, messages):
+        response = self.client.chat.completions.create(
+            model="glm-4-0520",
+            messages=messages,
+            stream=True
+        )
+        return response
+        
+    def process_parallel_responses(self, data):
         # 构建用户基础信息
         user_info = self._format_user_info(data)
         
@@ -39,7 +29,7 @@ class ZhipuModel:
             k: [{"role": "user", "content": v}] for k, v in prompts.items()
         }
         
-        # 返回所有响应
+        # 返回所有响应流
         return {
             k: self.get_response(v) for k, v in messages.items()
         }
