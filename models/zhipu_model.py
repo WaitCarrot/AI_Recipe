@@ -5,6 +5,7 @@ class ZhipuModel:
     def __init__(self):
         #self.client = ZhipuAI(api_key=os.getenv("ZhipuAI_API_KEY"))
         self.client = ZhipuAI(api_key="d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z")
+        print("client generated!!!")
         
     def get_response(self, messages):
         response = self.client.chat.completions.create(
