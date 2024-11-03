@@ -23,7 +23,7 @@ class ZhipuModel:
             "messages": messages
         }
         response = requests.post(self.base_url, headers=headers, json=data)
-        print(response)
+        print(response.json())
         return response
         
     def process_parallel_responses(self, data):
