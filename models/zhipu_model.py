@@ -15,7 +15,8 @@ class ZhipuModel:
         }
         data = {
             "model": "glm-4",
-            "messages": messages
+            "messages": messages,
+            "stresm": True,
         }
         async with aiohttp.ClientSession() as session:
             async with session.post(self.base_url, headers=headers, json=data) as response:
