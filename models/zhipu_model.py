@@ -6,7 +6,7 @@ class ZhipuModel:
         self.client = ZhipuAI(api_key="d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z")
         
     def get_response(self, messages):
-        response = self.client.chat.completions.create(
+        response = self.client.chat.asyncCompletions.create(
             model="glm-4-0520",
             messages=messages,
             stream=True
