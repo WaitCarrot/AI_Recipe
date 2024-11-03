@@ -11,6 +11,10 @@ zhipu_model = ZhipuModel()
 # 配置日志
 logging.basicConfig(level=logging.DEBUG)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/submit', methods=['GET'])
 def submit():
     data = json.loads(request.args.get('data', '{}'))
