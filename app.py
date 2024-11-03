@@ -20,6 +20,7 @@ def submit():
             
             # 首先并行处理三个主要方案
             responses = model.process_parallel_responses(data)
+            print(responses)
             
             # 用于跟踪每个流的完成状态和累积内容
             completed = {k: False for k in responses.keys()}
