@@ -4,11 +4,6 @@
         {
             "src": "app.py",
             "use": "@vercel/python"
-            "config": {
-        "maxLambdaSize": "15mb",
-        "python": "3.9",
-        "timeout": 60
-      }
         }
     ],
     "routes": [
