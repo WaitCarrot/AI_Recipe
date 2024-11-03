@@ -101,5 +101,5 @@ def analyze():
     # 处理POST请求的逻辑
     return jsonify({'message': 'Analysis complete'})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+ #   app.run(debug=True)
