@@ -18,6 +18,7 @@ class ZhipuModel:
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
         }
+        messages = [{"role": "user", "content": "你好",} ,] 
         data = {
             "model": "glm-4",
             "messages": messages
