@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>AI营养规划师</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <div class="title-icon-group">
+                <i class="fas fa-robot primary-icon"></i>
+                <i class="fas fa-apple-alt secondary-icon"></i>
+                <i class="fas fa-heartbeat tertiary-icon"></i>
+            </div>
+            <h1 class="main-title" data-text="AI营养规划师">AI营养规划师</h1>
+        </div>
+        
+        <form id="health-form">
+            <!-- 基础信息 -->
+            <div class="form-section">
+                <h3><i class="fas fa-user-circle"></i> 基础信息</h3>
+                <div class="form-grid">
+                    <div class="form-group short-field">
+                        <label for="age"><i class="fas fa-birthday-cake"></i> 年龄</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-group short-field">
+                        <label for="gender"><i class="fas fa-venus-mars"></i> 性别</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">请选择</option>
+                            <option value="male">男</option>
+                            <option value="female">女</option>
+                        </select>
+                    </div>
+                    <div class="form-group short-field">
+                        <label for="height"><i class="fas fa-ruler-vertical"></i> 身高 (cm)</label>
+                        <input type="number" id="height" name="height" required>
+                    </div>
+                    <div class="form-group short-field">
+                        <label for="weight"><i class="fas fa-weight"></i> 体重 (kg)</label>
+                        <input type="number" id="weight" name="weight" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 生活习惯 -->
+            <div class="form-section">
+                <h3><i class="fas fa-clock"></i> 生活习惯</h3>
+                <div class="form-grid">
+                    <div class="form-group medium-field">
+                        <label for="water_intake"><i class="fas fa-glass-water"></i> 日均饮水量</label>
+                        <select id="water_intake" name="water_intake">
+                            <option value="">请选择</option>
+                            <option value="insufficient">不足1000ml</option>
+                            <option value="normal">1000-2000ml</option>
+                            <option value="adequate">2000ml以上</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="caffeine"><i class="fas fa-mug-hot"></i> 咖啡因摄入</label>
+                        <select id="caffeine" name="caffeine">
+                            <option value="">请选择</option>
+                            <option value="none">几乎不摄入</option>
+                            <option value="low">偶尔饮用</option>
+                            <option value="medium">每天1-2次</option>
+                            <option value="high">每天3次以上</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="exercise_frequency"><i class="fas fa-running"></i> 运动频率</label>
+                        <select id="exercise_frequency" name="exercise_frequency">
+                            <option value="">请选择</option>
+                            <option value="never">几乎不运动</option>
+                            <option value="occasional">偶尔运动</option>
+                            <option value="regular">每周3-4次</option>
+                            <option value="frequent">每周5次以上</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="sleep_schedule"><i class="fas fa-bed"></i> 作息时间</label>
+                        <select id="sleep_schedule" name="sleep_schedule">
+                            <option value="">请选择</option>
+                            <option value="regular">规律（23点前睡）</option>
+                            <option value="moderate">较规律（24点前睡）</option>
+                            <option value="irregular">不规律（经常超过24点）</option>
+                            <option value="reverse">昼夜颠倒</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="processed_food"><i class="fas fa-hamburger"></i> 加工食品摄入</label>
+                        <select id="processed_food" name="processed_food">
+                            <option value="">请选择</option>
+                            <option value="rarely">很少食用</option>
+                            <option value="sometimes">每周2-3次</option>
+                            <option value="often">每天都有</option>
+                            <option value="frequent">每天多次</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="stress_level"><i class="fas fa-burn"></i> 工作压力水平</label>
+                        <select id="stress_level" name="stress_level">
+                            <option value="">请选择</option>
+                            <option value="low">压力较小</option>
+                            <option value="moderate">压力适中</option>
+                            <option value="high">压力较大</option>
+                            <option value="severe">压力很大</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="screen_time"><i class="fas fa-laptop"></i> 每日电子屏幕使用时间</label>
+                        <select id="screen_time" name="screen_time">
+                            <option value="">请选择</option>
+                            <option value="low">小于4小时</option>
+                            <option value="moderate">4-8小时</option>
+                            <option value="high">8-12小时</option>
+                            <option value="very_high">12小时以上</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="social_dining"><i class="fas fa-utensils"></i> 社交聚餐频率</label>
+                        <select id="social_dining" name="social_dining">
+                            <option value="">请选择</option>
+                            <option value="rarely">很少（每月1-2次）</option>
+                            <option value="sometimes">偶尔（每周1-2次）</option>
+                            <option value="often">经常（每周3-4次）</option>
+                            <option value="frequent">频繁（每周4次以上）</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="cooking_habit"><i class="fas fa-cutlery"></i> 烹饪习惯</label>
+                        <select id="cooking_habit" name="cooking_habit">
+                            <option value="">请选择</option>
+                            <option value="home_cooking">以自己烹饪为主</option>
+                            <option value="takeout">以外卖为主</option>
+                            <option value="dining_out">以餐厅就餐为主</option>
+                            <option value="mixed">混合</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 健康状况 -->
+            <div class="form-section">
+                <h3><i class="fas fa-heartbeat"></i> 健康状况</h3>
+                <div class="form-grid">
+                    <div class="form-group medium-field">
+                        <label for="sleep_quality"><i class="fas fa-moon"></i> 睡眠质量</label>
+                        <select id="sleep_quality" name="sleep_quality">
+                            <option value="">请选择</option>
+                            <option value="good">良好（睡眠充足，精神饱满）</option>
+                            <option value="normal">一般（偶有失眠）</option>
+                            <option value="poor">较差（经常失眠）</option>
+                            <option value="very_poor">很差（长期失眠）</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="digestion"><i class="fas fa-utensils"></i> 消化系统状况</label>
+                        <select id="digestion" name="digestion">
+                            <option value="">请选择</option>
+                            <option value="good">良好</option>
+                            <option value="bloating">经常胀气</option>
+                            <option value="indigestion">消化不良</option>
+                            <option value="irregular">排便不规律</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="energy_level"><i class="fas fa-battery-three-quarters"></i> 日常精力状态</label>
+                        <select id="energy_level" name="energy_level">
+                            <option value="">请选择</option>
+                            <option value="energetic">精力充沛</option>
+                            <option value="normal">精力一般</option>
+                            <option value="tired">容易疲劳</option>
+                            <option value="exhausted">长期疲惫</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="immunity"><i class="fas fa-shield-alt"></i> 免疫力状况</label>
+                        <select id="immunity" name="immunity">
+                            <option value="">请选择</option>
+                            <option value="strong">很少感冒（每年1次以下）</option>
+                            <option value="normal">偶尔感冒（每年2-3次）</option>
+                            <option value="weak">容易感冒（每年4次以上）</option>
+                            <option value="very_weak">经常生病</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="skin_condition"><i class="fas fa-hand-sparkles"></i> 皮肤状况</label>
+                        <select id="skin_condition" name="skin_condition">
+                            <option value="">请选择</option>
+                            <option value="healthy">健康有光泽</option>
+                            <option value="dry">干燥</option>
+                            <option value="oily">油腻</option>
+                            <option value="sensitive">敏感易过敏</option>
+                            <option value="problematic">易生痘/湿疹</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="menstrual_health"><i class="fas fa-calendar-alt"></i> 女性生理周期</label>
+                        <select id="menstrual_health" name="menstrual_health">
+                            <option value="">请选择</option>
+                            <option value="regular">规律正常</option>
+                            <option value="irregular">不规律</option>
+                            <option value="painful">痛经</option>
+                            <option value="none">停经</option>
+                            <option value="male">男性/不适用</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="joint_muscle"><i class="fas fa-bone"></i> 关节肌肉状况</label>
+                        <select id="joint_muscle" name="joint_muscle">
+                            <option value="">请选择</option>
+                            <option value="healthy">健康灵活</option>
+                            <option value="stiff">经常僵硬</option>
+                            <option value="pain">经常疼痛</option>
+                            <option value="weak">无力</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="weight_change"><i class="fas fa-balance-scale"></i> 近期体重变化</label>
+                        <select id="weight_change" name="weight_change">
+                            <option value="">请选择</option>
+                            <option value="stable">稳定（±2kg以内）</option>
+                            <option value="gain">明显增加（>2kg）</option>
+                            <option value="loss">明显减少（>2kg）</option>
+                            <option value="fluctuate">波动大</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="allergy_sensitivity"><i class="fas fa-allergies"></i> 过敏敏感情况</label>
+                        <select id="allergy_sensitivity" name="allergy_sensitivity">
+                            <option value="">请选择</option>
+                            <option value="none">无过敏史</option>
+                            <option value="food">食物过敏</option>
+                            <option value="seasonal">季节性过敏</option>
+                            <option value="multiple">多种过敏</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 中医体质评估部分 -->
+            <div class="form-section">
+                <h3><i class="fas fa-yin-yang"></i> 中医体质评估</h3>
+                <div class="form-grid">
+                    <div class="form-group medium-field">
+                        <label for="constitution"><i class="fas fa-balance-scale"></i> 体质类型</label>
+                        <select id="constitution" name="constitution">
+                            <option value="">请选择</option>
+                            <option value="平和质">平和质</option>
+                            <option value="气虚质">气虚质</option>
+                            <option value="阳虚质">阳虚质</option>
+                            <option value="阴虚质">阴虚质</option>
+                            <option value="痰湿质">痰湿质</option>
+                            <option value="湿热质">湿热质</option>
+                            <option value="血瘀质">血瘀质</option>
+                            <option value="气郁质">气郁质</option>
+                            <option value="特禀质">特禀质</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="complexion"><i class="fas fa-palette"></i> 面色</label>
+                        <select id="complexion" name="complexion">
+                            <option value="">请选择</option>
+                            <option value="红润">红润</option>
+                            <option value="苍白">苍白</option>
+                            <option value="萎黄">萎黄</option>
+                            <option value="晦暗">晦暗</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="tongue"><i class="fas fa-tooth"></i> 舌苔状况</label>
+                        <select id="tongue" name="tongue">
+                            <option value="">请选择</option>
+                            <option value="薄白">薄白</option>
+                            <option value="黄腻">黄腻</option>
+                            <option value="厚白">厚白</option>
+                            <option value="淡红">淡红</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group medium-field">
+                        <label for="pulse"><i class="fas fa-heartbeat"></i> 脉象</label>
+                        <select id="pulse" name="pulse">
+                            <option value="">请选择</option>
+                            <option value="有力">有力</option>
+                            <option value="无力">无力</option>
+                            <option value="浮">浮</option>
+                            <option value="沉">沉</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">
+                <i class="fas fa-magic"></i> 生成营养方案
+            </button>
+        </form>
+
+        <div class="results-container">
+            <div class="result-section">
+                <h2><i class="fas fa-pills"></i> 营养补剂方案</h2>
+                <div id="supplement-container" class="result-content"></div>
+            </div>
+            
+            <div class="result-section">
+                <h2><i class="fas fa-leaf"></i> 中医药方案</h2>
+                <div id="tcm-container" class="result-content"></div>
+            </div>
+            
+            <div class="result-section">
+                <h2><i class="fas fa-utensils"></i> 饮食推荐方案</h2>
+                <div id="diet-container" class="result-content"></div>
+            </div>
+            
+            <div class="result-section summary">
+                <h2><i class="fas fa-clipboard-list"></i> 综合建议</h2>
+                <div id="summary-container" class="result-content"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
