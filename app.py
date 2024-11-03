@@ -17,8 +17,9 @@ async def fetch_response(session, url, data):
     async with session.post(url, json=data) as response:
         return await response.json()
 
-def handler(event, context):
-    data = json.loads(event['queryStringParameters'].get('data', '{}'))
+@app.route('/submit', methods=['GET'])
+def submit():
+    data = json.loads(request.args.get('data', '{}'))
     
     async def generate_response():
         try:
@@ -99,7 +100,8 @@ def handler(event, context):
         }
     )
 
-def analyze(event, context):
+@app.route('/analyze', methods=['POST'])
+def analyze():
     # 处理POST请求的逻辑
     return jsonify({'message': 'Analysis complete'})
 
