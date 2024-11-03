@@ -5,7 +5,7 @@ class ZhipuModel:
     def __init__(self):
         self.client = ZhipuAI(api_key="d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z")
         
-    def get_response(self, messages):
+    async def get_response(self, messages):
         messages = [{"role": "user", "content": "请回复：你好",} ,] 
         response = self.client.chat.asyncCompletions.create(
             model="glm-4-0520",
@@ -26,7 +26,7 @@ class ZhipuModel:
         return result_response.choices[0].message.content
         #return response
         
-    def process_parallel_responses(self, data):
+    async def process_parallel_responses(self, data):
         # 构建用户基础信息
         user_info = self._format_user_info(data)
         
