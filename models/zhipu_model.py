@@ -17,7 +17,7 @@ class ZhipuModel:
         get_cnt = 0
 
         while task_status != 'SUCCESS' and task_status != 'FAILED' and get_cnt <= 40:
-            result_response = client.chat.asyncCompletions.retrieve_completion_result(id=task_id)
+            result_response = self.client.chat.asyncCompletions.retrieve_completion_result(id=task_id)
             print(result_response.task_status)
             task_status = result_response.task_status
             time.sleep(2)
