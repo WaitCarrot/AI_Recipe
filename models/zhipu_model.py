@@ -9,7 +9,7 @@ class ZhipuModel:
         response = self.client.chat.asyncCompletions.create(
             model="glm-4-0520",
             messages=messages,
-            stream=True
+            #stream=True
         )
         return response
         
