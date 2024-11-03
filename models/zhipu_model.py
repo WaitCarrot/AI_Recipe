@@ -1,21 +1,14 @@
 import os
-from zhipuai import ZhipuAI
-import requests
+import aiohttp
 import json
+import logging
 
 class ZhipuModel:
     def __init__(self):
-        #self.client = ZhipuAI(api_key=os.getenv("ZhipuAI_API_KEY"))
-        self.client = ZhipuAI(api_key="d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z")
-        print("client generated!!!")
-        self.api_key = "d2ad332fbdf122498e45e70563723e89.R4gtZhvynrh2x95Z"
+        self.api_key = os.getenv("ZhipuAI_API_KEY")
         self.base_url = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-        
-    def get_response(self, messages):
-        messages = [{"role": "user", "content": "请回复：你好",} ,] 
-        response = self.client.chat.completions.create(model="glm-4-0520", messages=messages, stream=True)
-        """
-        print("ready to get response!!!")
+
+    async def get_response(self, messages):
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
@@ -24,16 +17,12 @@ class ZhipuModel:
             "model": "glm-4",
             "messages": messages
         }
-        print(data)
-        print(headers)
-        response = requests.post(self.base_url, headers=headers, json=data)
-        print(response.json()["choices"][0]["message"]["content"])
-        return response.json()["choices"][0]["message"]["content"]
-        """
-        print(response)
-        return response
-        
-    def process_parallel_responses(self, data):
+        async with aiohttp.ClientSession() as session:
+            async with session.post(self.base_url, headers=headers, json=data) as response:
+                async for chunk in response.content.iter_any():
+                    yield chunk
+
+    async def process_parallel_responses(self, data):
         # 构建用户基础信息
         user_info = self._format_user_info(data)
         
@@ -49,7 +38,7 @@ class ZhipuModel:
             k: [{"role": "user", "content": v}] for k, v in prompts.items()
         }
         
-        # 返回所有响应流
+        # 返回所有响应
         return {
             k: self.get_response(v) for k, v in messages.items()
         }
