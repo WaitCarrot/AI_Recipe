@@ -11,6 +11,7 @@ class ZhipuModel:
             messages=messages,
             #stream=True
         )
+        print(response)
         return response
         
     def process_parallel_responses(self, data):
