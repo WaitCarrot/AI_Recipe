@@ -1,0 +1,1426 @@
+:root {
+    --primary-color: #2c7a7b;
+    --primary-hover: #285e61;
+    --bg-color: #f7fafc;
+    --text-color: #2d3748;
+    --border-color: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+/* 表单样式 */
+.form-section {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.6s ease-out;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.form-section h3 i {
+    font-size: 1.3em;
+    transition: all 0.3s ease;
+}
+
+/* 悬浮效果 */
+.form-section:hover h3 {
+    transform: translateX(5px);
+}
+
+.form-section:hover h3 i {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--primary-hover);
+}
+
+/* 为每个表单部分添加独特的图标颜色 */
+.form-section:nth-child(1) h3 i {
+    color: #e74c3c;  /* 红色 - 基础信息 */
+}
+
+.form-section:nth-child(2) h3 i {
+    color: #27ae60;  /* 绿色 - 生活习惯 */
+}
+
+.form-section:nth-child(3) h3 i {
+    color: #f39c12;  /* 橙色 - 健康状况 */
+}
+
+.form-section:nth-child(4) h3 i {
+    color: #3498db;  /* 蓝色 - 中医体质评估 */
+}
+
+/* 添加图标浮动动画 */
+@keyframes floatIcon {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+.form-section h3 i {
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+/* 为每个图标设置不同的动画延迟，创造错落感 */
+.form-section:nth-child(1) h3 i { animation-delay: 0s; }
+.form-section:nth-child(2) h3 i { animation-delay: 0.5s; }
+.form-section:nth-child(3) h3 i { animation-delay: 1s; }
+.form-section:nth-child(4) h3 i { animation-delay: 1.5s; }
+
+/* 表单项图标动画 */
+.form-group label i {
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.form-group:hover label i {
+    transform: scale(1.2) rotate(10deg);
+    color: var(--primary-hover);
+}
+
+/* 添加表单项图标的渐入动画 */
+@keyframes fadeInIcon {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-group label i {
+    animation: fadeInIcon 0.5s ease-out forwards;
+}
+
+/* 为表单项图标添加不同的动画延迟 */
+.form-grid .form-group:nth-child(4n + 1) label i { animation-delay: 0.1s; }
+.form-grid .form-group:nth-child(4n + 2) label i { animation-delay: 0.2s; }
+.form-grid .form-group:nth-child(4n + 3) label i { animation-delay: 0.3s; }
+.form-grid .form-group:nth-child(4n + 4) label i { animation-delay: 0.4s; }
+
+/* 添加点击波纹效果 */
+.form-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease-out, height 0.6s ease-out;
+}
+
+.form-section:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+/* 表单项悬浮效果增强 */
+.form-group {
+    transition: all 0.3s ease;
+}
+
+.form-group:hover {
+    transform: translateY(-2px);
+}
+
+/* 输入框焦点效果增强 */
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.1);
+    transform: translateY(-1px);
+}
+
+/* 添加表单部分的渐变边框效果 */
+.form-section {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.form-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        var(--primary-hover),
+        var(--primary-color)
+    );
+    background-size: 200% 100%;
+    animation: gradientBorder 3s linear infinite;
+}
+
+@keyframes gradientBorder {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    animation: slideIn 0.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+.form-group.short-field {
+    grid-column: span 1;
+}
+
+.form-group.medium-field {
+    grid-column: span 2;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+/* 为输入框添加焦点效果 */
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(44, 122, 123, 0.1);
+    transform: translateY(-1px);
+}
+
+/* 提交按钮 */
+.submit-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin: 30px auto;
+    display: block;
+    min-width: 200px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(44, 122, 123, 0.2);
+}
+
+.submit-button:active {
+    transform: translateY(1px);
+}
+
+.submit-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 3s infinite;
+    transform: translateX(-100%);
+}
+
+/* 结果容器 */
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.result-section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    animation: scaleIn 0.6s ease-out;
+    transition: all 0.3s ease;
+}
+
+.result-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.result-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.result-section h2 i {
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+/* 悬浮效果 */
+.result-section:hover h2 {
+    transform: translateX(5px);
+}
+
+.result-section:hover h2 i {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--primary-hover);
+}
+
+/* 为每个结果部分添加独特的图标颜色 */
+.result-section:nth-child(1) h2 i {
+    color: #e74c3c;  /* 红色 - 营养补充 */
+}
+
+.result-section:nth-child(2) h2 i {
+    color: #27ae60;  /* 绿色 - 中医药 */
+}
+
+.result-section:nth-child(3) h2 i {
+    color: #f39c12;  /* 橙色 - 饮食推荐 */
+}
+
+.result-section:nth-child(4) h2 i {
+    color: #3498db;  /* 蓝色 - 综合建议 */
+}
+
+/* 添加图标浮动动画 */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+}
+
+.result-section h2 i {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 为每个图标设置不同的动画延迟，创造错落感 */
+.result-section:nth-child(1) h2 i { animation-delay: 0s; }
+.result-section:nth-child(2) h2 i { animation-delay: 0.5s; }
+.result-section:nth-child(3) h2 i { animation-delay: 1s; }
+.result-section:nth-child(4) h2 i { animation-delay: 1.5s; }
+
+/* 添加点击波纹效果 */
+.result-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.result-section::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease-out, height 0.6s ease-out;
+}
+
+.result-section:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+}
+
+/* 添加内容加载动画 */
+@keyframes contentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-content > * {
+    animation: contentFadeIn 0.5s ease-out forwards;
+}
+
+/* 为不同部分设置不同的强调色 */
+.result-section:nth-child(1) {
+    border-top: 3px solid #e74c3c;
+}
+
+.result-section:nth-child(2) {
+    border-top: 3px solid #27ae60;
+}
+
+.result-section:nth-child(3) {
+    border-top: 3px solid #f39c12;
+}
+
+.result-section:nth-child(4) {
+    border-top: 3px solid #3498db;
+}
+
+/* 添加卡片翻转效果 */
+.result-section {
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.result-section:hover {
+    transform: translateY(-5px) rotateX(5deg);
+}
+
+/* 添加阴影过渡效果 */
+.result-section {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.result-section:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.result-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    scroll-behavior: smooth;
+}
+
+/* 美化滚动条 */
+.result-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.result-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.result-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.result-content::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+}
+
+/* 综合建议特殊样式 */
+.result-section.summary {
+    grid-column: 1 / -1;
+    height: 600px;
+    min-height: 300px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .form-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group.short-field,
+    .form-group.medium-field {
+        grid-column: span 1;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* 添加动画关键帧 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* 为标题添加渐变动画 */
+h1 {
+    background: linear-gradient(
+        45deg,
+        var(--primary-color) 0%,
+        #3498db 50%,
+        var(--primary-color) 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradient 3s linear infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 为图标添加动画 */
+.fas {
+    transition: all 0.3s ease;
+}
+
+.form-group:hover .fas {
+    transform: scale(1.2);
+    color: var(--primary-color);
+}
+
+/* 添加滚动动画 */
+.result-content {
+    scroll-behavior: smooth;
+}
+
+/* 添加内容更新动画 */
+.content-update {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.markdown-content {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.markdown-content p,
+.markdown-content ul,
+.markdown-content ol {
+    margin-bottom: 0.5em;
+    line-height: 1.6;
+}
+
+/* 标题容器样式 */
+.title-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    overflow: hidden;
+    border: none;
+}
+
+/* 移除所有可能的装饰性线条 */
+.title-container::before,
+.title-container::after {
+    display: none;
+}
+
+/* 确保图标组没有装饰线 */
+.title-icon-group::before,
+.title-icon-group::after {
+    display: none;
+}
+
+/* 确保主标题没有装饰线 */
+.main-title::before {
+    /* 只保留发光效果，移除其他可能的装饰 */
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        #89f7fe 0%,
+        #66a6ff 50%,
+        #0061ff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(8px);
+    opacity: 0.7;
+    animation: glowPulse 2s infinite;
+    border: none;
+}
+
+.main-title::after {
+    display: none;
+}
+
+/* 装饰性边框 - 上边框 */
+.title-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #66a6ff 20%,
+        #66a6ff 80%,
+        transparent 100%
+    );
+    animation: borderPulse 2s infinite;
+}
+
+/* 装饰性边框 - 下边框 */
+.title-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #66a6ff 20%,
+        #66a6ff 80%,
+        transparent 100%
+    );
+    animation: borderPulse 2s infinite reverse;
+}
+
+/* 边框动画 */
+@keyframes borderPulse {
+    0%, 100% {
+        opacity: 0.3;
+        background-position: 100% 0;
+    }
+    50% {
+        opacity: 1;
+        background-position: -100% 0;
+    }
+}
+
+/* 图标组样式 */
+.title-icon-group {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    cursor: pointer;
+    /* 添加3D效果 */
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+/* 图标基础样式 */
+.title-icon-group i {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+}
+
+/* 主图标 - AI机器人 */
+.primary-icon {
+    color: #4158D0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    font-size: 2.5em;
+    animation: primaryFloat 4s ease-in-out infinite;
+}
+
+/* 次要图标 - 苹果 */
+.secondary-icon {
+    color: #20bf55;
+    right: -10px;
+    bottom: -5px;
+    font-size: 2em !important;
+    z-index: 2;
+    animation: secondaryFloat 4s ease-in-out infinite;
+}
+
+/* 第三图标 - 心跳 */
+.tertiary-icon {
+    color: #C850C0;
+    left: -5px;
+    top: -5px;
+    font-size: 1.8em !important;
+    z-index: 1;
+    animation: tertiaryFloat 4s ease-in-out infinite;
+}
+
+/* 发光效果 */
+.title-icon-group i::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.primary-icon::after { background: #4158D0; }
+.secondary-icon::after { background: #20bf55; }
+.tertiary-icon::after { background: #C850C0; }
+
+/* 悬浮效果 */
+.title-icon-group:hover .primary-icon {
+    transform: translate(-50%, -50%) scale(1.2) rotate(360deg);
+    filter: drop-shadow(0 0 12px rgba(65, 88, 208, 0.5));
+}
+
+.title-icon-group:hover .secondary-icon {
+    transform: scale(1.15) rotate(-15deg) translateX(-10px);
+    filter: drop-shadow(0 0 12px rgba(32, 191, 85, 0.5));
+}
+
+.title-icon-group:hover .tertiary-icon {
+    transform: scale(1.15) rotate(15deg) translateX(10px);
+    filter: drop-shadow(0 0 12px rgba(200, 80, 192, 0.5));
+}
+
+.title-icon-group:hover i::after {
+    opacity: 0.4;
+}
+
+/* 主图标浮动动画 */
+@keyframes primaryFloat {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -60%) rotate(5deg);
+    }
+    75% {
+        transform: translate(-50%, -40%) rotate(-5deg);
+    }
+}
+
+/* 次要图标浮动动画 */
+@keyframes secondaryFloat {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(5px, -5px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(-5px, 5px) rotate(5deg);
+    }
+}
+
+/* 图标浮动画 */
+@keyframes tertiaryFloat {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-5px, -5px) rotate(5deg);
+    }
+    75% {
+        transform: translate(5px, 5px) rotate(-5deg);
+    }
+}
+
+/* 添加脉冲光环效果 */
+.title-icon-group::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, 
+        rgba(65, 88, 208, 0.2),
+        rgba(32, 191, 85, 0.2),
+        rgba(200, 80, 192, 0.2)
+    );
+    transform: translate(-50%, -50%);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+    }
+}
+
+/* 点击效果 */
+.title-icon-group:active {
+    transform: scale(0.95);
+}
+
+.title-icon-group:active i {
+    transform: scale(0.9);
+}
+
+/* 添加闪光效果 */
+@keyframes sparkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.title-icon-group::after {
+    content: '✨';
+    position: absolute;
+    font-size: 1.2em;
+    animation: sparkle 2s ease-in-out infinite;
+    opacity: 0;
+}
+
+.title-icon-group::after:nth-child(1) {
+    top: -10px;
+    right: -10px;
+    animation-delay: 0s;
+}
+
+.title-icon-group::after:nth-child(2) {
+    bottom: -10px;
+    left: -10px;
+    animation-delay: 0.5s;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .title-icon-group {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .primary-icon {
+        font-size: 2em;
+    }
+    
+    .secondary-icon {
+        font-size: 1.6em !important;
+    }
+    
+    .tertiary-icon {
+        font-size: 1.4em !important;
+    }
+}
+
+/* 导入更多在线字体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+
+/* 标题样式 */
+.main-title {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 4.2em;
+    font-weight: 900;
+    letter-spacing: 3px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* 主要渐变效果 */
+.main-title {
+    background: linear-gradient(
+        135deg,
+        #00F5A0 0%,
+        #00D9F5 50%,
+        #9D00FF 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 3s ease infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 发光效果 */
+.main-title {
+    filter: drop-shadow(0 0 20px rgba(0, 217, 245, 0.3));
+}
+
+/* 立体文字效果 */
+.main-title::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    background: linear-gradient(
+        135deg,
+        #9D00FF 0%,
+        #00D9F5 50%,
+        #00F5A0 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* 科技感动画效果 */
+.main-title::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 6%,
+        rgba(0, 217, 245, 0.1) 7.5%,
+        transparent 9%,
+        transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 4s infinite linear;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* 悬浮效果 */
+.main-title:hover {
+    animation: glitch 0.8s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* 添加科技感线条装饰 */
+.title-container::before,
+.title-container::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00D9F5,
+        transparent
+    );
+}
+
+.title-container::before {
+    left: -120px;
+    top: 50%;
+    animation: lineMove 2s infinite alternate;
+}
+
+.title-container::after {
+    right: -120px;
+    top: 50%;
+    animation: lineMove 2s infinite alternate-reverse;
+}
+
+@keyframes lineMove {
+    from {
+        transform: scaleX(0.8);
+        opacity: 0.5;
+    }
+    to {
+        transform: scaleX(1.2);
+        opacity: 1;
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3.2em;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2.5em;
+        letter-spacing: 1px;
+    }
+}
+
+/* 导入字体 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@900&display=swap');
+
+/* 标题容器 */
+.title-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* 主标题样式 */
+.main-title {
+    font-family: 'Orbitron', 'Noto Sans SC', sans-serif;
+    font-size: 4em;
+    font-weight: 900;
+    position: relative;
+    letter-spacing: 4px;
+    background: linear-gradient(
+        120deg,
+        #89f7fe 0%,
+        #66a6ff 50%,
+        #0061ff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(102, 166, 255, 0.4));
+}
+
+/* 发光效果 */
+.main-title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        #89f7fe 0%,
+        #66a6ff 50%,
+        #0061ff 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: blur(8px);
+    opacity: 0.7;
+    animation: glowPulse 2s infinite;
+}
+
+/* 动画定义 */
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.7;
+        filter: blur(8px) brightness(1);
+    }
+    50% {
+        opacity: 0.9;
+        filter: blur(8px) brightness(1.2);
+    }
+}
+
+/* 悬浮故障效果 */
+.main-title:hover {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+        text-shadow: 
+            2px 0 #00E6FA,
+            -2px 0 #FF0080;
+    }
+    40% {
+        transform: translate(-2px, -2px);
+        text-shadow: 
+            3px 0 #00E6FA,
+            -3px 0 #FF0080;
+    }
+    60% {
+        transform: translate(2px, 2px);
+        text-shadow: 
+            2px 0 #00E6FA,
+            -2px 0 #FF0080;
+    }
+    80% {
+        transform: translate(2px, -2px);
+        text-shadow: 
+            -2px 0 #00E6FA,
+            2px 0 #FF0080;
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* 添加数字雨效果 */
+.matrix-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.matrix-line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(102, 166, 255, 0.2),
+        transparent
+    );
+    animation: matrixRain 2s infinite;
+}
+
+@keyframes matrixRain {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3em;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2em;
+        letter-spacing: 1px;
+    }
+}
+
+/* 结果容器布局 */
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+/* 结果部分样式 */
+.result-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 结果内容区域 */
+.result-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    scroll-behavior: smooth;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 打字机效果的容器 */
+.typing-content {
+    min-height: 100%;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    padding-bottom: 5px;
+    line-height: 1.4;
+}
+
+/* 调整段落间距 */
+.typing-content p {
+    margin-bottom: 0.4em;
+}
+
+/* 调整列表项间距 */
+.typing-content ul,
+.typing-content ol {
+    margin-bottom: 0.8em;
+    padding-left: 1.5em;
+}
+
+.typing-content li {
+    margin-bottom: 0.3em;
+}
+
+/* 调整标题间距 */
+.typing-content h1,
+.typing-content h2,
+.typing-content h3,
+.typing-content h4,
+.typing-content h5,
+.typing-content h6 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    line-height: 1.0;
+}
+
+/* 响应式调整 */
+@media (max-width: 1024px) {
+    .results-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-section {
+        height: 400px;
+    }
+}
+
+/* 确保滚动条始终可见 */
+.result-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.result-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.result-content::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+    opacity: 0.7;
+}
+
+.result-content::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+}
+
+/* 添加自动滚动指示器 */
+.result-content::after {
+    content: '';
+    display: block;
+    height: 20px;
+}
+
+/* 修改结果容器布局 */
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+    padding: 0 20px;
+}
+
+/* 综合建议占据整行，增加高度 */
+.result-section.summary {
+    grid-column: 1 / -1;  /* 跨越所有列 */
+    height: 500px;  /* 与其他容器相同的高度 */
+    margin-top: 20px;  /* 添加一些顶部间距 */
+}
+
+/* 结果部分样式 */
+.result-section {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 1024px) {
+    .results-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .result-section.summary {
+        grid-column: 1 / -1;
+        height: 500px;  /* 保持高度一致 */
+    }
+}
+
+@media (max-width: 768px) {
+    .results-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-section {
+        height: 400px;
+    }
+    
+    .result-section.summary {
+        grid-column: 1;
+        height: 400px;  /* 在移动端与其他容器保持一致 */
+    }
+}
