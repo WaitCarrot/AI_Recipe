@@ -12,6 +12,7 @@ class ZhipuModel:
         self.base_url = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
         
     def get_response(self, messages):
+        messages = [{"role": "user", "content": "请回复：你好",} ,] 
         response = self.client.chat.completions.create(model="glm-4-0520", messages=messages, stream=True)
         """
         print("ready to get response!!!")
@@ -19,7 +20,6 @@ class ZhipuModel:
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
         }
-        messages = [{"role": "user", "content": "请回复：你好",} ,] 
         data = {
             "model": "glm-4",
             "messages": messages
