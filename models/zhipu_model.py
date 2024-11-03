@@ -22,6 +22,8 @@ class ZhipuModel:
             "model": "glm-4",
             "messages": messages
         }
+        print(data)
+        print(headers)
         response = requests.post(self.base_url, headers=headers, json=data)
         print(response.json())
         return response
